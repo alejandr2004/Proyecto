@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Clase</title>
+    <script src="../../../JS/validaciones.js" defer></script>
 </head>
 <body>
 
@@ -32,13 +33,24 @@ if(isset($_GET['id'])){
     <label>ID de la clase:</label>
     <input type="text" name="Id_Classe" class="form-control" value="<?php echo $Id_Classe; ?>" readonly>
     <label>Código de la clase:</label>
-    <input type="text" name="Codi_Classe" class="form-control" value="<?php echo $Codi_Classe; ?>">
+    <input type="text" name="Codi_Classe" class="form-control" value="<?php echo $Codi_Classe; ?>" id="numero_5">
+    <p id="error_numero_5" style="color:red;"></p><br><br>
     <label>Nombre de la clase:</label>
-    <input type="text" name="Nom_Classe" class="form-control" value="<?php echo $Nom_Classe; ?>">
+    <input type="text" name="Nom_Classe" class="form-control" value="<?php echo $Nom_Classe; ?>" id="texto_15">
+    <p id="error_texto_15" style="color:red;"></p><br><br>
     <label>Tutor:</label>
-    <input type="text" name="Tutor" class="form-control" value="<?php echo $Tutor; ?>">
+    <input type="text" name="Tutor" class="form-control" value="<?php echo $Tutor; ?>" id="texto_16">
+    <p id="error_texto_16" style="color:red;"></p><br><br>
     <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('numero_5').addEventListener('input', () => validarNumero('numero_5', 'error_numero_5'));
+        document.getElementById('texto_15').addEventListener('input', () => validarTexto('texto_15', 'error_texto_15'));
+        document.getElementById('texto_16').addEventListener('input', () => validarTexto('texto_16', 'error_texto_16'));
+    });
+</script>
 
 </body>
 </html>

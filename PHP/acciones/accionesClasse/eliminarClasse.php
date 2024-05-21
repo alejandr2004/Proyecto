@@ -5,6 +5,16 @@ if(isset($_GET["id"])){
     $id = $_GET["id"];
 
     try {
+        // Actualiza el campo Id_Profesor en la tabla de alumnos estableciéndolo en NULL
+        $sql_update = "UPDATE alumnes SET Classe = NULL WHERE Classe = :id";
+        $stmt_update = $conexion->prepare($sql_update);
+        $stmt_update->bindParam(':id', $id);
+        $stmt_update->execute();
+        
+        
+        
+        
+        
         // Consulta SQL para eliminar el registro de la base de datos
         $sql = "DELETE FROM classe WHERE Id_Classe = :id";
         $stmt = $conexion->prepare($sql);

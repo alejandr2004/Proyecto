@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../../CSS/editarAlumnos.css">
+    <script src="../../../JS/validacionformEditarAlumnes.js"></script>
 </head>
 <body>
    
@@ -41,15 +43,20 @@ $id = $_GET['id'];
     <label>Id de l'alumne:</label>
     <input type="text" name="Id_Alumne" class="form-control" value="<?php echo $Id_Alumne; ?>" readonly>
     <label>DNI de l'alumne:</label>
-    <input type="text" name="DNI_Alumne" class="form-control" value="<?php echo $DNI_Alumne; ?>">
+    <input type="text" name="DNI_Alumne" class="form-control" value="<?php echo $DNI_Alumne; ?>" onmouseleave="validarDNI()">
+    <p id="error_DNI_4"></p><br><br>
     <label>Nom de l'alumne:</label>
-    <input type="text" name="Nom_Alumne" class="form-control" value="<?php echo $Nom_Alumne; ?>">
+    <input type="text" name="Nom_Alumne" class="form-control" value="<?php echo $Nom_Alumne; ?>" onmouseleave="validarTexto()">
+    <p id="error_texto_19"></p><br><br>
     <label>Primer Cognom:</label>
-    <input type="text" name="Cognom1_Alumne" class="form-control" value="<?php echo $Cognom1_Alumne; ?>">
+    <input type="text" name="Cognom1_Alumne" class="form-control" value="<?php echo $Cognom1_Alumne; ?>" onmouseleave="validarTexto()">
+    <p id="error_texto_20"></p><br><br>
     <label>Segon Cognom:</label>
-    <input type="text" name="Cognom2_Alumne" class="form-control" value="<?php echo $Cognom2_Alumne; ?>">
+    <input type="text" name="Cognom2_Alumne" class="form-control" value="<?php echo $Cognom2_Alumne; ?>" onmouseleave="validarTexto()">
+    <p id="error_texto_21"></p><br><br>
     <label>Classe:</label>
-    <input type="text" name="Classe" class="form-control" value="<?php echo $Classe; ?>">
+    <input type="text" name="Classe" class="form-control" value="<?php echo $Classe; ?>" onmouseleave="validarNumero()">
+    <p id="error_numero_8"></p><br><br>
     <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 

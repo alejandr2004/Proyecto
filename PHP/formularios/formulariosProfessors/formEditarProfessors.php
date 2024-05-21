@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="../../../JS/validaciones.js" defer></script>
 </head>
 <body>
-   
-
 
 <?php
 require_once "../../conexion.php";
@@ -30,41 +29,63 @@ if(isset($_GET['id'])){
         $Sexe_professor = $dades["Sexe_professor"];
         $dept = $dades["dept"];
     }
-
-
 }
-
 ?>
 
-<a class="btn btn-outline-primary" href='../../professors.php' role='button'>Tornar a inici</a>
+<a class="btn btn-outline-primary" href="../../professors.php" role='button'>Tornar a inici</a>
 
 <h1>Editar</h1>
-        <form method="POST" action="../../acciones/accionesProfessors/editarProfessors.php">
-        <label>Id del professor:</label>
-        <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" readonly>
-        <label>Nom del professor:</label>
-        <input type="text" name="Nom_professor" class="form-control" value="<?php echo $Nom_professor; ?>">
-        <label>Primer Cognom:</label>
-        <input type="text" name="Cognom1_professor" class="form-control" value="<?php echo $Cognom1_professor; ?>">
-        <label>Segon Cognom:</label>
-        <input type="text" name="Cognom2_professor" class="form-control" value="<?php echo $Cognom2_professor; ?>">
-        <label>Telèfon del professor:</label>
-        <input type="text" name="Telefon_professor" class="form-control" value="<?php echo $Telefon_professor; ?>">
-        <label>DNI del professor:</label>
-        <input type="text" name="DNI_professor" class="form-control" value="<?php echo $DNI_professor; ?>">
-        <label>Correu del professor:</label>
-        <input type="text" name="Correu_professor" class="form-control" value="<?php echo $Correu_professor; ?>">
-        <label>Sexe del professor:</label>
-        <input type="text" name="Sexe_professor" class="form-control" value="<?php echo $Sexe_professor; ?>">
-        <label>Departament:</label>
-        <input type="text" name="dept" class="form-control" value="<?php echo $dept; ?>">
-        <button type="button submit" class="btn btn-primary">Guardar</button>
+<form method="POST" action="../../acciones/accionesProfessors/editarProfessors.php">
+    <label>Id del professor:</label>
+    <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" readonly>
+    
+    <label>Nom del professor:</label>
+    <input type="text" name="Nom_professor" class="form-control" value="<?php echo $Nom_professor; ?>" id="texto_6">
+    <p id="error_texto_6" style="color:red;"></p><br><br>
+    
+    <label>Primer Cognom:</label>
+    <input type="text" name="Cognom1_professor" class="form-control" value="<?php echo $Cognom1_professor; ?>" id="texto_7">
+    <p id="error_texto_7" style="color:red;"></p><br><br>
+    
+    <label>Segon Cognom:</label>
+    <input type="text" name="Cognom2_professor" class="form-control" value="<?php echo $Cognom2_professor; ?>" id="texto_8">
+    <p id="error_texto_8" style="color:red;"></p><br><br>
+    
+    <label>Telèfon del professor:</label>
+    <input type="text" name="Telefon_professor" class="form-control" value="<?php echo $Telefon_professor; ?>" id="telefono_2">
+    <p id="error_telefono_2" style="color:red;"></p><br><br>
+    
+    <label>DNI del professor:</label>
+    <input type="text" name="DNI_professor" class="form-control" value="<?php echo $DNI_professor; ?>" id="DNI_2">
+    <p id="error_DNI_2" style="color:red;"></p><br><br>
+    
+    <label>Correu del professor:</label>
+    <input type="text" name="Correu_professor" class="form-control" value="<?php echo $Correu_professor; ?>" id="texto_9">
+    <p id="error_texto_9" style="color:red;"></p><br><br>
+    
+    <label>Sexe del professor:</label>
+    <input type="text" name="Sexe_professor" class="form-control" value="<?php echo $Sexe_professor; ?>" id="texto_10">
+    <p id="error_texto_10" style="color:red;"></p><br><br>
+    
+    <label>Departament:</label>
+    <input type="text" name="dept" class="form-control" value="<?php echo $dept; ?>" id="numero_1">
+    <p id="error_numero_1" style="color:red;"></p><br><br>
+    
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
 
-    </form>
-
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('texto_6').addEventListener('input', () => validarTexto('texto_6', 'error_texto_6'));
+    document.getElementById('texto_7').addEventListener('input', () => validarTexto('texto_7', 'error_texto_7'));
+    document.getElementById('texto_8').addEventListener('input', () => validarTexto('texto_8', 'error_texto_8'));
+    document.getElementById('telefono_2').addEventListener('input', () => validarTelefono('telefono_2', 'error_telefono_2'));
+    document.getElementById('DNI_2').addEventListener('input', () => validarDNI('DNI_2', 'error_DNI_2'));
+    document.getElementById('texto_9').addEventListener('input', () => validarEmail('texto_9', 'error_texto_9'));
+    document.getElementById('texto_10').addEventListener('input', () => validarTexto('texto_10', 'error_texto_10'));
+    document.getElementById('numero_1').addEventListener('input', () => validarNumero('numero_1', 'error_numero_1'));
+});
 </script>
-
-
 
 </body>
 </html>

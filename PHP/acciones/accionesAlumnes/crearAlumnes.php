@@ -20,9 +20,6 @@
                 'Cognom1_Alumne' => $Cognom1_Alumne,
                 'Cognom2_Alumne' => $Cognom2_Alumne,
                 'Classe' => $Classe,
-                
-                 
-            
             )
             );
         header('Location: ../../alumnes.php');
