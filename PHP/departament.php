@@ -53,12 +53,12 @@ $consulta = $result->fetchAll();
                     </th>
                     <th scope="col">
                         <form method="post" class="d-inline">
-                            <input type="submit" name="filtre_Codi_Dept" value="DNI de l'Alumne" class="btn btn-link p-0 m-0 align-baseline">
+                            <input type="submit" name="filtre_Codi_Dept" value="Codi Departament" class="btn btn-link p-0 m-0 align-baseline">
                         </form>
                     </th>
                     <th scope="col">
                         <form method="post" class="d-inline">
-                            <input type="submit" name="filtre_Nom_Dept" value="Nom de l'Alumne" class="btn btn-link p-0 m-0 align-baseline">
+                            <input type="submit" name="filtre_Nom_Dept" value="Nom del departament" class="btn btn-link p-0 m-0 align-baseline">
                         </form>
                     </th>
                     <th scope="col">Modificacions</th>

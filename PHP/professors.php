@@ -22,23 +22,49 @@ echo $error;
 }
 // Filtrados de los titulos, filtro basico de A-Z
 if (isset($_POST['filtre_id'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY Id_professor ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY Id_professor ASC;");
 } elseif (isset($_POST['filtre_Nom_Professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY Nom_professor ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY Nom_Professor ASC;");
 } elseif (isset($_POST['filtre_cognom1_professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY Cognom1_professor ASC;");
-} elseif (isset($_POST['filtre_cognom2_professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY Cognom2_professor ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY Cognom1_Professor  ASC;");
+    } elseif (isset($_POST['filtre_cognom2_professor'])) {
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY Cognom2_Professor ASC;");
 } elseif (isset($_POST['filtre_telefon_professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY Telefon_professor ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY Telefon_Professor ASC;");
 } elseif (isset($_POST['filtre_DNI_professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY DNI_professor ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY DNI_Professor ASC;");
 } elseif (isset($_POST['filtre_correu_professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY Correu_professor ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY Telefon_Professor ASC;");
 } elseif (isset($_POST['filtre_sexe_professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY Sexe_professor ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ORDER BY Nom_Dept ASC;");
 } elseif (isset($_POST['filtre_departament_professor'])) {
-    $result = $conexion->query("SELECT * FROM $tbl_professors ORDER BY dept ASC;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d;");
 } else {
     // Si no hay filtro seleccionado, mostrar la tabla normal
     $result = $conexion->query("SELECT * FROM $tbl_professors;");
@@ -119,7 +145,7 @@ $consulta = $result->fetchAll();
                     echo "<td scope='col'>" . $datos["DNI_professor"] . "</td>";
                     echo "<td scope='col'>" . $datos["Correu_professor"] . "</td>";
                     echo "<td scope='col'>" . $datos["Sexe_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["dept"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Nom_Dept"] . "</td>";
                     echo "<td scope='col'>
                             <a class='btn btn-primary btn-sm me-1' href='./formularios/formulariosProfessors/formEditarProfessors.php?id=" . $datos['Id_professor'] . "' role='button'>Editar</a>
                             <a class='btn btn-danger btn-sm' href='./acciones/accionesProfessors/eliminarProfessors.php?id=" . $datos['Id_professor'] . "' role='button'>Eliminar</a>

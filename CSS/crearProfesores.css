@@ -32,7 +32,7 @@ body.contactBody {
 .wrapper {
     width: 80%;
     height: 50%;
-    margin: 0% auto 0 auto;
+    margin: 0 auto;
 }
 
 .form {
@@ -46,17 +46,26 @@ body.contactBody {
     padding: 10px 10px;
 }
 
+.entry {
+    display: block;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.5s ease 0s;
+    box-shadow: 0px 0px 25px 2px #AAA;
+}
+
 .name {
     background-color: #d9534f;
     border-bottom: 5px solid #b1322d;
-    color: rgb(0, 0, 0);
+    color: white;
     width: 300px;
 }
 
 .name:hover {
     background-color: rgb(163, 49, 43);
     border-bottom: 5px solid #802420;
-    height: 30px;
     width: 400px;
 }
 
@@ -69,14 +78,13 @@ body.contactBody {
 .email:hover {
     background-color: rgb(21, 10, 36);
     border-bottom: 5px solid rgb(21, 10, 36);
-    height: 30px;
     width: 380px;
     color: white;
 }
+
 .message {
     background-color: rgb(160, 161, 54);
     border-bottom: 5px solid rgb(160, 161, 54);
-    overflow: hidden;
     width: 300px;
 }
 
@@ -94,7 +102,7 @@ body.contactBody {
     border-bottom: 5px solid #550e43;
     width: 150px;
     color: white;
-    margin-top: 150px;
+    margin-top: 20px;
 }
 
 .submit:hover {
@@ -106,16 +114,6 @@ body.contactBody {
     text-align: center;
     font-size: 40px;
     color: rgb(100, 37, 37);
-}
-
-.entry {
-    display: block;
-    margin: 30px auto;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    transition: all 0.5s ease 0s;
-    box-shadow: 0px 0px 25px 2px #AAA;
 }
 
 .shadow {
@@ -134,22 +132,19 @@ body.contactBody {
 }
 
 
-
 @keyframes shadow {
     0% {}
-
     50% {
         opacity: 0.8;
         width: 50%;
     }
 }
-/* Estilos para los placeholders */
+
 input::placeholder, 
 textarea::placeholder {
     color: white;
 }
 
-/* Placeholder color para diferentes navegadores */
 input:-ms-input-placeholder, 
 textarea:-ms-input-placeholder {
     color: white;
@@ -159,3 +154,5 @@ input::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
     color: white;
 }
+
+

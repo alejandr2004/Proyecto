@@ -39,8 +39,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="../../../CSS/crearAlumnos.css"> <!-- Asegúrate de enlazar correctamente tu archivo CSS -->
-    <script src="../../../JS/validacionformCrearAlumnes.js"></script>
+    <link rel="stylesheet" href="../../../CSS/crearAlumnos.css">
+    <script src="../../../JS/validaciones.js"></script>
 </head>
 <body class="contactBody">
 
@@ -52,18 +52,26 @@
     </div>
 
     <form class="form" method="POST" action="../../acciones/accionesAlumnes/crearAlumnes.php">
-        <input type="text" class="entry name" name="DNI_Alumne" placeholder="DNI de l'alumne" onmouseleave="validarDNI()">
-        <p id="error_DNI_3"></p>
-        <input type="text" class="entry email" name="Nom_Alumne" placeholder="Nom de l'alumne" onmouseleave="validarTexto()">
-        <p id="error_texto_16"></p>
-        <input type="text" class="entry email" name="Cognom1_Alumne" placeholder="Primer Cognom" onmouseleave="validarTexto()">
-        <p id="error_texto_17"></p>
-        <input type="text" class="entry email" name="Cognom2_Alumne" placeholder="Segon Cognom" onmouseleave="validarTexto()">
-        <p id="error_texto_18"></p>
-        <input type="text" class="entry message" name="Classe" placeholder="Classe" onmouseleave="validarNumero()">
-        <p id="error_numero_7"></p>
+        <input type="text" class="entry name" name="DNI_Alumne" placeholder="DNI de l'alumne" id="DNI_3">
+        <p id="error_DNI_3" style="color:red;"></p>
+        <input type="text" class="entry email" name="Nom_Alumne" placeholder="Nom de l'alumne" id="texto_17">
+        <p id="error_texto_17" style="color:red;"></p>
+        <input type="text" class="entry email" name="Cognom1_Alumne" placeholder="Primer Cognom" id="texto_18">
+        <p id="error_texto_18" style="color:red;"></p>
+        <input type="text" class="entry email" name="Cognom2_Alumne" placeholder="Segon Cognom" id="texto_19">
+        <p id="error_texto_19" style="color:red;"></p>
+        <input type="text" class="entry message" name="Classe" placeholder="Classe" id="numero_6">
+        <p id="error_numero_6" style="color:red;"></p>
+    
+    <button type="submit" class="btn btn-primary submit entry">Enviar</button>
     </form>
-    <button class="btn btn-primary submit entry">Enviar</button>
 </div>
+
+<!-- Script de validación -->
+
+
+
+<script src="../../../JS/validaciones.js"></script>
+
 </body>
 </html>

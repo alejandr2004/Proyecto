@@ -1,4 +1,22 @@
 
+/*Para hacer las validaciones he optado por utilizar "listeners". Estos elementos están a la espera de un "evento" que activará
+el código que tienen asociado lo que se conoce como "callback" (tiene algo de similitud con los "triggers" de mysql, estos se activaban
+antes o después de hacer cualquier modificación)*/
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+  
+// });
+
+
+
+
+
+
+
+
+
+
 function validarTexto(inputId, errorId) {
     const input = document.getElementById(inputId);
     const errorText = document.getElementById(errorId);
@@ -70,6 +88,11 @@ function validarNumero(inputId, errorId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('DNI_3').addEventListener('input', () => validarDNI('DNI_3', 'error_DNI_3'));
+document.getElementById('texto_17').addEventListener('input', () => validarTexto('texto_17', 'error_texto_17'));
+document.getElementById('texto_18').addEventListener('input', () => validarTexto('texto_18', 'error_texto_18'));
+document.getElementById('texto_19').addEventListener('input', () => validarTexto('texto_19', 'error_texto_19'));
+document.getElementById('numero_6').addEventListener('input', () => validarNumero('numero_6', 'error_numero_6'));
 document.getElementById('texto_1').addEventListener('input', () => validarTexto('texto_1', 'error_texto_1'));
 document.getElementById('texto_2').addEventListener('input', () => validarTexto('texto_2', 'error_texto_2'));
 document.getElementById('texto_3').addEventListener('input', () => validarTexto('texto_3', 'error_texto_3'));
