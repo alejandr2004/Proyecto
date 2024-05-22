@@ -11,6 +11,18 @@
 <?php
 require_once '../../conexion.php';
 
+
+
+session_start(); // Iniciar la sesión
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Si no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header("location: ../../index.php");
+    exit(); // Importante para evitar que el código PHP siga ejecutándose
+} 
+
+
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     

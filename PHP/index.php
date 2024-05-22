@@ -21,7 +21,7 @@
                   <img src="../IMG/login.png" style="width: 185px;" alt="logo">
                   <h2 class="mt-1 mb-5 pb-1">Iniciar sesión como Administrador</h2>
                 </div>
-                <form method="post" class="login-form" action="<?php /*echo htmlspecialchars($_SERVER["PHP_SELF"]);*/ ?>">
+                <form method="post" class="login-form">
                   <div data-mdb-input-init class="form-outline mb-4">
                     <object type="image/svg+xml" data="../IMG/user-solid.svg" width="15" height="15"></object>
                     <label class="form-label" for="usuario">Usuario</label>
@@ -75,19 +75,22 @@
 -->
 
 <?php
-/*
+
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST["usuario"];
     $contraseña = $_POST["password"];
 
     if ($usuario == "root" && $contraseña == "QAZqaz123") {
+      
+      $_SESSION["usuario"]=1;
         header("Location: ./alumnes.php");
         exit(); // Importante para evitar que el código PHP siga ejecutándose
     } else {
         echo "<p class='text-danger text-center'>Usuario o contraseña incorrectos</p>";
     }
 }
-*/
+
 ?>
 
 </body>

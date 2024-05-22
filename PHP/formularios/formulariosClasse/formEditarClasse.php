@@ -7,7 +7,19 @@
     <script src="../../../JS/validaciones.js" defer></script>
 </head>
 <body>
+<?php
 
+session_start(); // Iniciar la sesión
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Si no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header("location: ../../index.php");
+    exit(); // Importante para evitar que el código PHP siga ejecutándose
+} 
+
+
+?>
 <a class="btn btn-outline-primary" href='../../classe.php' role='button'>Volver al inicio</a>
 
 <?php
