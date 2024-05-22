@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,7 @@
                   <img src="../IMG/login.png" style="width: 185px;" alt="logo">
                   <h2 class="mt-1 mb-5 pb-1">Iniciar sesión como Administrador</h2>
                 </div>
-                <form method="post" class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <form method="post" class="login-form" action="<?php /*echo htmlspecialchars($_SERVER["PHP_SELF"]);*/ ?>">
                   <div data-mdb-input-init class="form-outline mb-4">
                     <object type="image/svg+xml" data="../IMG/user-solid.svg" width="15" height="15"></object>
                     <label class="form-label" for="usuario">Usuario</label>
@@ -55,13 +54,15 @@
   </div>
 </section>
 
+<!-- Desactivado el script de validación -->
+<!--
 <script>
     function validacion() {
         let usuario_js = document.getElementById("usuario").value;
         let contraseña_js = document.getElementById("password").value;
         let texto_error = document.getElementById("texto_error_login");
 
-        if (usuario_js.length === 0 && contraseña_js.length === 0) {
+        if (usuario_js.length === 0 || contraseña_js.length === 0) {
             texto_error.innerHTML = "Introduce los datos en el formulario";
             return false; // Evitar que se envíe el formulario
         } else if (usuario_js !== "root" || contraseña_js !== "QAZqaz123") {
@@ -71,22 +72,24 @@
         return true; // Permitir el envío del formulario
     }
 </script>
+-->
 
 <?php
+/*
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST["usuario"];
     $contraseña = $_POST["password"];
 
     if ($usuario == "root" && $contraseña == "QAZqaz123") {
-        header("location:./alumnes.php");
+        header("Location: ./alumnes.php");
         exit(); // Importante para evitar que el código PHP siga ejecutándose
     } else {
-        echo "<p class='text-danger'>Usuario o contraseña incorrectos</p>";
+        echo "<p class='text-danger text-center'>Usuario o contraseña incorrectos</p>";
     }
 }
+*/
 ?>
 
 </body>
 </html>
-
 

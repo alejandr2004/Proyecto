@@ -39,7 +39,17 @@ if(isset($_GET['id'])){
     <input type="text" name="Nom_Classe" class="form-control" value="<?php echo $Nom_Classe; ?>" id="texto_15">
     <p id="error_texto_15" style="color:red;"></p><br><br>
     <label>Tutor:</label>
-    <input type="text" name="Tutor" class="form-control" value="<?php echo $Tutor; ?>" id="texto_16">
+    <select name='Codi_Dept' id='Codi_Dept' class='entry'>
+                <?php
+                require_once "../../conexion.php";
+                $result = $conexion->query("SELECT Id_Professor FROM professors;");
+                $departamentos = $result->fetchAll();
+
+                foreach ($departamentos as $departamento) {
+                    echo "<option value='".$departamento['Id_Professor']."'>".$departamento['Id_Professor']."</option>";
+                }
+                ?>
+            </select>
     <p id="error_texto_16" style="color:red;"></p><br><br>
     <button type="submit" class="btn btn-primary">Guardar</button>
 </form>

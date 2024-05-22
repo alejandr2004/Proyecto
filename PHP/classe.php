@@ -9,6 +9,15 @@
 </head>
 <body>
 <?php
+session_start(); // Iniciar la sesión
+/*
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Si no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header("location: index.php");
+    exit(); // Importante para evitar que el código PHP siga ejecutándose
+}
+*/
 $usu = "root";
 $pwd = "Alex_5963";
 $srv = "localhost";
@@ -63,7 +72,7 @@ $consulta = $result->fetchAll(PDO::FETCH_ASSOC);
         <a class="btn btn-outline-primary me-2" href="professors.php" role="button">Professors</a>
         <a class="btn btn-outline-primary me-2" href="alumnes.php" role="button">Alumnes</a>
         <a class="btn btn-outline-primary me-2" href="departament.php" role="button">Departament</a>
-        <a class="btn btn-outline-primary" href="./formularios/formulariosDepartament/formCrearDepartament.php" role="button">Crear</a>
+        <a class="btn btn-outline-primary" href="./formularios/formulariosClasse/formCrearClasse.php" role="button">Crear</a>
     </div>
     <!-- Titulos de las columnas, Que filtran -->
     <div class="table-responsive">

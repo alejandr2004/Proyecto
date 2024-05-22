@@ -13,6 +13,7 @@
 
 <div class="form">
     <form method="POST" action="../../acciones/accionesDepartament/crearDepartament.php">
+    <div class="title">Crear Departamento</div>
         <input class="entry name" type="text" name="Codi_Dept" placeholder="Codigo del departamento:" id="numero_2">
         <p class="error" id="error_numero_2"></p><br><br>
         

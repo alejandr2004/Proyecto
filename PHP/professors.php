@@ -9,6 +9,15 @@
 </head>
 <body>
 <?php
+session_start(); // Iniciar la sesión
+/*
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Si no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header("location: index.php");
+    exit(); // Importante para evitar que el código PHP siga ejecutándose
+}
+*/
 $usu="root";
 $pwd="Alex_5963";
 $srv="localhost";
@@ -22,54 +31,67 @@ echo $error;
 }
 // Filtrados de los titulos, filtro basico de A-Z
 if (isset($_POST['filtre_id'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY Id_professor ASC;");
+    ON p.dept = d.Codi_Dept
+    ORDER BY p.Id_Professor ASC;");
 } elseif (isset($_POST['filtre_Nom_Professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY Nom_Professor ASC;");
+    ON p.dept = d.Codi_Dept
+    ORDER BY p.Nom_Professor ASC;");
 } elseif (isset($_POST['filtre_cognom1_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY Cognom1_Professor  ASC;");
-    } elseif (isset($_POST['filtre_cognom2_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    ON p.dept = d.Codi_Dept
+    ORDER BY p.Cognom1_Professor ASC;");
+} elseif (isset($_POST['filtre_cognom2_professor'])) {
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY Cognom2_Professor ASC;");
+    ON p.dept = d.Codi_Dept
+    ORDER BY p.Cognom2_Professor ASC;");
 } elseif (isset($_POST['filtre_telefon_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY Telefon_Professor ASC;");
+    ON p.dept = d.Codi_Dept
+    ORDER BY p.Telefon_Professor ASC;");
 } elseif (isset($_POST['filtre_DNI_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY DNI_Professor ASC;");
+    ON p.dept = d.Codi_Dept
+    ORDER BY p.DNI_Professor ASC;");
 } elseif (isset($_POST['filtre_correu_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY Telefon_Professor ASC;");
+    ON p.dept = d.Codi_Dept
+    ORDER BY p.Correu_Professor ASC;");
 } elseif (isset($_POST['filtre_sexe_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
     INNER JOIN Departament d
-    ORDER BY Nom_Dept ASC;");
+    ON p.dept = d.Codi_Dept
+    ORDER BY d.Nom_Dept ASC;");
 } elseif (isset($_POST['filtre_departament_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Porfessor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
     FROM Professors p
-    INNER JOIN Departament d;");
+    INNER JOIN Departament d
+    ON p.dept = d.Codi_Dept
+    ORDER BY d.Nom_Dept ASC;");
 } else {
     // Si no hay filtro seleccionado, mostrar la tabla normal
-    $result = $conexion->query("SELECT * FROM $tbl_professors;");
+    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+    FROM Professors p
+    INNER JOIN Departament d
+    ON p.dept = d.Codi_Dept;");
 }
-$consulta = $result->fetchAll();
+$consulta = $result->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- Botones de las tablas -->
 <div class="container mt-4">
@@ -137,19 +159,19 @@ $consulta = $result->fetchAll();
                 // Imprimimos los datos en la tabla
                 foreach ($consulta as $posicion => $datos) {
                     echo "<tr>";
-                    echo "<td scope='col'>" . $datos["Id_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["Nom_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["Cognom1_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["Cognom2_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["Telefon_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["DNI_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["Correu_professor"] . "</td>";
-                    echo "<td scope='col'>" . $datos["Sexe_professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Id_Professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Nom_Professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Cognom1_Professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Cognom2_Professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Telefon_Professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["DNI_Professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Correu_Professor"] . "</td>";
+                    echo "<td scope='col'>" . $datos["Sexe_Professor"] . "</td>";
                     echo "<td scope='col'>" . $datos["Nom_Dept"] . "</td>";
                     echo "<td scope='col'>
-                            <a class='btn btn-primary btn-sm me-1' href='./formularios/formulariosProfessors/formEditarProfessors.php?id=" . $datos['Id_professor'] . "' role='button'>Editar</a>
-                            <a class='btn btn-danger btn-sm' href='./acciones/accionesProfessors/eliminarProfessors.php?id=" . $datos['Id_professor'] . "' role='button'>Eliminar</a>
-                          </td>";
+                        <a class='btn btn-primary btn-sm me-1' href='./formularios/formulariosProfessors/formEditarProfessors.php?id=" . $datos['Id_Professor'] . "' role='button'>Editar</a>
+                        <a class='btn btn-danger btn-sm' href='./acciones/accionesProfessors/eliminarProfessors.php?id=" . $datos['Id_Professor'] . "' role='button'>Eliminar</a>
+                    </td>";
                     echo "</tr>";
                 }
                 ?>

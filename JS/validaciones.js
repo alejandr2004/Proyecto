@@ -47,15 +47,25 @@ function validarTelefono(inputId, errorId) {
 function validarEmail(inputId, errorId) {
     const email = document.getElementById(inputId).value.trim();
     const errorEmail = document.getElementById(errorId);
+    let containsAt = false;
+
+    for (let i = 0; i < email.length; i++) {
+        if (email[i] === '@') {
+            containsAt = true;
+            break;
+        }
+    }
 
     if (email === "" || /^\s+$/.test(email)) {
         errorEmail.innerHTML = "El campo no puede estar vacío.";
-    } else if (!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(email)) {
+    } else if (!containsAt) {
         errorEmail.innerHTML = "Formato incorrecto.";
     } else {
         errorEmail.innerHTML = "";
     }
 }
+
+
 
 function validarDNI(inputId, errorId) {
     const dni = document.getElementById(inputId).value.trim();

@@ -1,0 +1,229 @@
+body.contactBody {
+    font-family: Arial, sans-serif;
+    background-color: #fff5e6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 90vh;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+.btn-outline-primary {
+    color: black;
+    border: 2px solid rgb(12, 5, 5);
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background-color: #d9534f;
+}
+
+.wrapper {
+    width: 80%;
+    height: 50%;
+    margin: 0 auto;
+}
+
+.form {
+    background: #EBEBEB;
+    text-align: center;
+    box-shadow: 0px 0px 20px 5px #8b8585;
+    border-radius: 10px;
+    width: 45%;
+    height: auto;
+    margin: 30px auto;
+    padding: 10px 10px;
+}
+
+.entry {
+    display: block;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.5s ease 0s;
+    box-shadow: 0px 0px 25px 2px #AAA;
+}
+
+.name {
+    background-color: #d9534f;
+    border-bottom: 5px solid #b1322d;
+    color: white;
+    width: 300px;
+}
+
+.name:hover {
+    background-color: rgb(163, 49, 43);
+    border-bottom: 5px solid #802420;
+    width: 400px;
+}
+
+.email {
+    background-color: #7239C1;
+    border-bottom: 5px solid #502789;
+    width: 300px;
+}
+
+.email:hover {
+    background-color: rgb(21, 10, 36);
+    border-bottom: 5px solid rgb(21, 10, 36);
+    width: 380px;
+    color: white;
+}
+
+.message {
+    background-color: rgb(160, 161, 54);
+    border-bottom: 5px solid rgb(160, 161, 54);
+    width: 300px;
+}
+
+.message:hover {
+    background-color: rgb(98, 99, 35);
+    border-bottom: 5px solid rgb(70, 71, 14);
+    width: 370px;
+}
+
+.submit {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(142, 24, 146);
+    border: none;
+    border-bottom: 5px solid #550e43;
+    width: 150px;
+    color: white;
+    margin-top: 20px;
+}
+
+.submit:hover {
+    border-bottom: 5px solid rgb(37, 78, 80);
+    box-shadow: 15px 15px 15px 5px rgba(78, 72, 77, 0.219);
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    color: rgb(100, 37, 37);
+}
+
+.shadow {
+    box-shadow: 0px 0px 60px 5px #AAA;
+    opacity: 0.5;
+    border-radius: 100px;
+    width: 50%;
+    margin: 50px auto 0 auto;
+    padding: 0 20px;
+    animation: shadow 1.5s infinite;
+}
+
+.error {
+    color: #d9534f;
+    font-size: 14px;
+}
+
+@keyframes shadow {
+    0% {}
+    50% {
+        opacity: 0.8;
+        width: 50%;
+    }
+}
+
+input::placeholder, 
+textarea::placeholder {
+    color: white;
+}
+
+input:-ms-input-placeholder, 
+textarea:-ms-input-placeholder {
+    color: white;
+}
+
+input::-ms-input-placeholder, 
+textarea::-ms-input-placeholder {
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: gainsboro;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: gainsboro;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.auth-buttons {
+    display: flex;
+    margin-left: auto;
+}
+
+.auth-buttons .login,
+.auth-buttons .register {
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.auth-buttons .login {
+    background-color: white;
+    color: black;
+}
+
+.auth-buttons .register {
+    background-color: #007bff;
+    color: black;
+}
+
+.select {
+    background-color: #7239C1;
+    border-bottom: 5px solid #502789;
+    width: 300px;
+}
+
+.select:hover {
+    background-color: rgb(21, 10, 36);
+    border-bottom: 5px solid rgb(21, 10, 36);
+    width: 380px;
+    color: white;
+}

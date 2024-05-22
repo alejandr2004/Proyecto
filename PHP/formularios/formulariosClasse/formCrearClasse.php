@@ -7,25 +7,51 @@
     <script src="../../../JS/validaciones.js" defer></script>
     <link rel="stylesheet" href="../../../CSS/crearClase.css">
 </head>
-<body>
+<body class="contactBody">
+
+<header>
+    <nav>
+        <a href="#"><img src="../../../IMG/login.png" alt="Logo" class="logo"></a>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Características</a></li>
+            <li><a href="#">Precios</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Acerca</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="login" onclick="window.location.href='../../index.php'">Cerrar Sesion</button>
+        </div>
+    </nav>
+</header>
 
 <a class="btn btn-outline-primary" href='../../classe.php' role='button'>Tornar a inici</a>
 
-<form method="POST" action="../../acciones/accionesClasse/crearClasse.php">
-    <label>Código de la clase:</label>
-    <input type="text" name="Codi_Classe" id="numero_4">
-    <p id="error_numero_4" style="color:red;"></p><br><br>
-    
-    <label>Nombre de la clase:</label>
-    <input type="text" name="Nom_Classe" id="texto_13">
-    <p id="error_texto_13" style="color:red;"></p><br><br>
-    
-    <label>Tutor:</label>
-    <input type="text" name="Tutor" id="texto_14">
-    <p id="error_texto_14" style="color:red;"></p><br><br>
-    
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+<div class="form">
+    <form method="POST" action="../../acciones/accionesClasse/crearClasse.php">
+    <div class="title">Crear Classe</div>
+        <input class="entry name" type="text" name="Codi_Classe" placeholder="Código de la clase:" id="numero_4">
+        <p class="error" id="error_numero_4"></p><br><br>
+        
+        <input class="entry email" type="text" name="Nom_Classe" placeholder="Nombre de la clase:" id="texto_13">
+        <p class="error" id="error_texto_13"></p><br><br>
+        <label>ID del professor:</label>
+        <select name='Codi_Dept' id='Codi_Dept' class='entry select'>
+                <?php
+                require_once "../../conexion.php";
+                $result = $conexion->query("SELECT Id_Professor FROM professors;");
+                $departamentos = $result->fetchAll();
+
+                foreach ($departamentos as $departamento) {
+                    echo "<option value='".$departamento['Id_Professor']."'>".$departamento['Id_Professor']."</option>";
+                }
+                ?>
+            </select>
+        <p class="error" id="error_texto_14"></p><br><br>
+        
+        <button type="submit" class="btn submit">Enviar</button>
+    </form>
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -37,3 +63,4 @@
 
 </body>
 </html>
+

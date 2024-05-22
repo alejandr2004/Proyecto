@@ -8,7 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
+<div class="mb-3">
+    <input type="text" id="searchInput" class="form-control" placeholder="Buscar...">
+</div>
+<script src="../JS/barraBuscadora.js"></script>
+
 <?php
+session_start(); // Iniciar la sesión
+/*
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Si no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header("location: index.php");
+    exit(); // Importante para evitar que el código PHP siga ejecutándose
+}
+*/
 $usu = "root";
 $pwd = "Alex_5963";
 $srv = "localhost";

@@ -131,15 +131,6 @@ body.contactBody {
     font-size: 14px;
 }
 
-
-@keyframes shadow {
-    0% {}
-    50% {
-        opacity: 0.8;
-        width: 50%;
-    }
-}
-
 input::placeholder, 
 textarea::placeholder {
     color: white;
@@ -156,3 +147,21 @@ textarea::-ms-input-placeholder {
 }
 
 
+select.entry {
+    background-color: #7239C1;
+    border-bottom: 5px solid #502789;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.5s ease 0s;
+    box-shadow: 0px 0px 25px 2px #AAA;
+    color: white;
+}
+
+select.entry:hover {
+    background-color: rgb(21, 10, 36);
+    border-bottom: 5px solid rgb(21, 10, 36);
+    width: 380px;
+    color: white;
+}
