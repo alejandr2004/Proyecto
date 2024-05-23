@@ -49,6 +49,7 @@ $consulta = $result->fetchAll();
         <a class="btn btn-outline-primary me-2" href="alumnes.php" role="button">Alumnes</a>
         <a class="btn btn-outline-primary me-2" href="classe.php" role="button">Classe</a>
         <a class="btn btn-outline-primary" href="./formularios/formulariosDepartament/formCrearDepartament.php" role="button">Crear</a>
+        <a class="btn btn-outline-primary" href="index.php" role="button">Cerrar Sesion</a>
     </div>
     <!-- Titulos de las columnas, Que filtran -->
     <div class="table-responsive">

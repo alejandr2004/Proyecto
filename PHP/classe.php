@@ -57,7 +57,7 @@ if (isset($_POST['filtre_id'])) {
     ORDER BY p.Nom_Professor ASC
     ;");
 } else {
-    // Si no hay filtro seleccionado, mostrar la tabla normal
+    // Si no hay filtro seleccionado, mostrar la tabla normal 
     $result = $conexion->query("SELECT c.Id_Classe, c.Codi_Classe, c.Nom_Classe, p.Nom_Professor
     FROM $tbl_classe c
     INNER JOIN Professors p
@@ -73,6 +73,7 @@ $consulta = $result->fetchAll(PDO::FETCH_ASSOC);
         <a class="btn btn-outline-primary me-2" href="alumnes.php" role="button">Alumnes</a>
         <a class="btn btn-outline-primary me-2" href="departament.php" role="button">Departament</a>
         <a class="btn btn-outline-primary" href="./formularios/formulariosClasse/formCrearClasse.php" role="button">Crear</a>
+        <a class="btn btn-outline-primary" href="index.php" role="button">Cerrar Sesion</a>
     </div>
     <!-- Titulos de las columnas, Que filtran -->
     <div class="table-responsive">

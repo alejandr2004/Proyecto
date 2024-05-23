@@ -20,7 +20,15 @@ if (!isset($_SESSION["usuario"])) {
 } 
 
 ?>
-<a class="btn btn-outline-primary" href='../../alumnes.php' role='button'>Tornar a inici</a>
+<header>
+    <nav>
+        <a href="#"><img src="../../../IMG/login.png" alt="Logo" class="logo"></a>
+        <a class="btn btn-outline-primary" href='../../classe.php' role='button'>Tornar a inici</a>
+        <div class="auth-buttons">
+            <button class="login" onclick="window.location.href='../../index.php'">Cerrar Sesion</button>
+        </div>
+    </nav>
+</header>
 
 <div class="wrapper">
     <div class="title">

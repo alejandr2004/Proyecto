@@ -20,21 +20,26 @@
         $Nom_Alumne = isset($_POST['Nom_Alumne']) ? $_POST['Nom_Alumne'] : '';
         $Cognom1_Alumne = isset($_POST['Cognom1_Alumne']) ? $_POST['Cognom1_Alumne'] : '';
         $Cognom2_Alumne = isset($_POST['Cognom2_Alumne']) ? $_POST['Cognom2_Alumne'] : '';
-        $Classe = isset($_POST['Classe']) ? $_POST['Classe'] : '';
-        
+        $Classe = isset($_POST['Classe']) ? $_POST['Classe'] : '';//Consulta del nombre asociado a esta clase
 
+       
         try {
             $conexion->beginTransaction();
-            $editar = "UPDATE alumnes SET Id_Alumne = :Id_Alumne, DNI_Alumne = :DNI_Alumne, Nom_Alumne = :Nom_Alumne, Cognom1_Alumne = :Cognom1_Alumne, Cognom2_Alumne = :Cognom2_Alumne, Classe = :Classe  WHERE Id_Alumne = :id"; 
+            $sql0=$conexion->query("SELECT Id_Classe FROM classe WHERE Nom_Classe = '$Classe'"); 
+            $array=$sql0->fetch();
+            $clase=$array[0];
+            //var_dump($clase);
+
+            $editar = "UPDATE alumnes SET Id_Alumne = ?, DNI_Alumne = ?, Nom_Alumne = ?, Cognom1_Alumne = ?, Cognom2_Alumne = ?, Classe = ?  WHERE Id_Alumne = ?"; 
 
             $sql = $conexion->prepare($editar);
-            $sql->bindParam(":Id_Alumne", $Id_Alumne);
-            $sql->bindParam(":DNI_Alumne", $DNI_Alumne);
-            $sql->bindParam(":Nom_Alumne", $Nom_Alumne);
-            $sql->bindParam(":Cognom1_Alumne", $Cognom1_Alumne);
-            $sql->bindParam(":Cognom2_Alumne", $Cognom2_Alumne);
-            $sql->bindParam(":Classe", $Classe);
-            $sql->bindParam(":id", $id);
+            $sql->bindParam(1, $Id_Alumne);
+            $sql->bindParam(2, $DNI_Alumne);
+            $sql->bindParam(3, $Nom_Alumne);
+            $sql->bindParam(4, $Cognom1_Alumne);
+            $sql->bindParam(5, $Cognom2_Alumne);
+            $sql->bindParam(6, $clase);
+            $sql->bindParam(7, $id);
             $sql->execute();
 
             $conexion->commit();

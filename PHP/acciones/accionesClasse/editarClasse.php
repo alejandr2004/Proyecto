@@ -15,11 +15,13 @@ if (!isset($_GET['id'])) {
     exit();
 } else {
     $id = $_GET['id'];
+   
+
     $Id_Classe = isset($_POST['Id_Classe']) ? $_POST['Id_Classe'] : '';
     $Codi_Classe = isset($_POST['Codi_Classe']) ? $_POST['Codi_Classe'] : '';
     $Nom_Classe = isset($_POST['Nom_Classe']) ? $_POST['Nom_Classe'] : '';
     $Tutor = isset($_POST['Tutor']) ? $_POST['Tutor'] : '';
-
+    
     try {
         $conexion->beginTransaction();
         $editar = "UPDATE classe SET Id_Classe = :Id_Classe, Codi_Classe = :Codi_Classe, Nom_Classe = :Nom_Classe, Tutor = :Tutor WHERE Id_Classe = :id";

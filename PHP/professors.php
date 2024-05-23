@@ -100,6 +100,7 @@ $consulta = $result->fetchAll(PDO::FETCH_ASSOC);
         <a class="btn btn-outline-primary me-2" href="departament.php" role="button">Departament</a>
         <a class="btn btn-outline-primary me-2" href="classe.php" role="button">Classe</a>
         <a class="btn btn-outline-primary" href="./formularios/formulariosProfessors/formCrearProfessors.php" role="button">Crear</a>
+        <a class="btn btn-outline-primary" href="index.php" role="button">Cerrar Sesion</a>
     </div>
 <!-- Titulos de las columnas, Que filtran -->
 <div class="table-responsive">
