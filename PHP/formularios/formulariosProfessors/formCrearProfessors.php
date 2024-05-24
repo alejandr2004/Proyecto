@@ -26,9 +26,9 @@ if (!isset($_SESSION["usuario"])) {
     <header>
         <nav>
             <a href="#"><img src="../../../IMG/login.png" alt="Logo" class="logo"></a>
-            <a class="btn btn-outline-primary" href='../../classe.php' role='button'>Tornar a inici</a>
+            <a class="btn btn-outline-primary" href='../../professors.php' role='button'>Tornar a inici</a>
             <div class="auth-buttons">
-                <button class="login" onclick="window.location.href='../../index.php'">Cerrar Sesion</button>
+                <button class="login" onclick="window.location.href='../../index.php?tick=1'">Cerrar Sesion</button>
             </div>
         </nav>
     </header>
@@ -50,7 +50,7 @@ if (!isset($_SESSION["usuario"])) {
             <p id="error_Sexe_professor" class="error"></p><br><br>
             
             <label>Departament:</label>
-            <select name='Codi_Dept' id='Codi_Dept' class='entry'>
+            <select name='dept' id='dept' class='entry'>
                 <?php
                 require_once "../../conexion.php";
                 $result = $conexion->query("SELECT Id_Dept, Codi_Dept FROM departament;");

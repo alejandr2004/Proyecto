@@ -96,9 +96,9 @@ function validarNumero(inputId, errorId) {
         errorText.innerHTML = "";
     }
 }
-
+/*
 document.addEventListener('DOMContentLoaded', () => {
-document.getElementById('DNI_3').addEventListener('input', () => validarDNI('DNI_3', 'error_DNI_3'));
+    $dni = document.getElementById('DNI_3').oninput = validarDNI('DNI_3', 'error_DNI_3');
 document.getElementById('texto_17').addEventListener('input', () => validarTexto('texto_17', 'error_texto_17'));
 document.getElementById('texto_18').addEventListener('input', () => validarTexto('texto_18', 'error_texto_18'));
 document.getElementById('texto_19').addEventListener('input', () => validarTexto('texto_19', 'error_texto_19'));
@@ -158,7 +158,7 @@ document.getElementById('email_10').addEventListener('input', () => validarEmail
 
 });
 
-
+*/
 
 
 

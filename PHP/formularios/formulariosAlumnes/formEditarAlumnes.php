@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../../CSS/editarAlumnos.css">
     <script src="../../../JS/validaciones.js"></script>
 </head>
-<body>
+<body class="contactBody">
 <?php
 require_once '../../conexion.php';
 
@@ -40,41 +40,46 @@ if(isset($_GET['id'])){
     }
 }
 ?>
-
-<a class="btn btn-outline-primary" href='../../alumnes.php' role='button'>Tornar a inici</a>
+<header>
+    <nav>
+        <a href="#"><img src="../../../IMG/login.png" alt="Logo" class="logo"></a>
+        <a class="btn-outline-primary boton" href='../../alumnes.php' role='button'>Tornar a inici</a>
+        <div class="auth-buttons">
+            <button class="login" onclick="window.location.href='../../index.php?tick=1'">Cerrar Sesion</button>
+        </div>
+    </nav>
+</header>
 
 <h1>Editar Alumno</h1>
+<div class="wrapper">
+    <div class="title">
+        <a>Crear Alumnos</a>
+    </div>
 
-<form method="post" action="../../acciones/accionesAlumnes/editarAlumnes.php?id=<?php echo $id; ?>">
-    <label>ID de l'alumno:</label>
-    <input type="text" name="Id_Alumne" class="form-control" value="<?php echo $Id_Alumne; ?>" readonly>
-    <label>DNI del alumno:</label>
-    <input type="text" name="DNI_Alumne" class="form-control" value="<?php echo $DNI_Alumne; ?>" id="DNI_4">
-    <p id="error_DNI_4" style="color:red;"></p><br><br>
-    <label>Nombre del alumno:</label>
-    <input type="text" name="Nom_Alumne" class="form-control" value="<?php echo $Nom_Alumne; ?>" id="texto_19">
-    <p id="error_texto_19" style="color:red;"></p><br><br>
-    <label>Primer Apellido:</label>
-    <input type="text" name="Cognom1_Alumne" class="form-control" value="<?php echo $Cognom1_Alumne; ?>" id="texto_20">
-    <p id="error_texto_20" style="color:red;"></p><br><br>
-    <label>Segundo Apellido:</label>
-    <input type="text" name="Cognom2_Alumne" class="form-control" value="<?php echo $Cognom2_Alumne; ?>" id="texto_21">
-    <p id="error_texto_21" style="color:red;"></p><br><br>
-    <label>Clase:</label>
-    <select name='Classe' id='Classe' class='entry'>
-    <?php
-                require_once "../../conexion.php";
-                $result = $conexion->query("SELECT Nom_Classe FROM classe;");
-                $departamentos = $result->fetchAll();
-                //var_dump($departamentos);
-                foreach ($departamentos as $departamento) {
-                    echo "<option value='".$departamento['Nom_Classe']."'>".$departamento['Nom_Classe']."</option>";
-                }
-                ?>
+    <form method="post" action="../../acciones/accionesAlumnes/editarAlumnes.php?id=<?php echo $id; ?>">
+        <input type="text" name="Id_Alumne" class="form-control" value="<?php echo $Id_Alumne; ?>" readonly>
+        <input type="text" name="DNI_Alumne" class="form-control" value="<?php echo $DNI_Alumne; ?>" id="DNI_4">
+        <p id="error_DNI_4" style="color:red;"></p>
+        <input type="text" name="Nom_Alumne" class="form-control" value="<?php echo $Nom_Alumne; ?>" id="texto_19">
+        <p id="error_texto_19" style="color:red;"></p>
+        <input type="text" name="Cognom1_Alumne" class="form-control" value="<?php echo $Cognom1_Alumne; ?>" id="texto_20">
+        <p id="error_texto_20" style="color:red;"></p>
+        <input type="text" name="Cognom2_Alumne" class="form-control" value="<?php echo $Cognom2_Alumne; ?>" id="texto_21">
+        <p id="error_texto_21" style="color:red;"></p>
+        <select name='Classe' id='Classe' class='entry'>
+        <?php
+                    require_once "../../conexion.php";
+                    $result = $conexion->query("SELECT Nom_Classe FROM classe;");
+                    $departamentos = $result->fetchAll();
+                    //var_dump($departamentos);
+                    foreach ($departamentos as $departamento) {
+                        echo "<option value='".$departamento['Nom_Classe']."'>".$departamento['Nom_Classe']."</option>";
+                    }
+                    ?>
     </select>
-    <p id="error_numero_8" style="color:red;"></p><br><br>
     <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
+    </form>
+</div>
 
 <!-- Script de validación -->
 <script>
@@ -83,7 +88,6 @@ if(isset($_GET['id'])){
         document.getElementById('texto_19').addEventListener('input', () => validarTexto('texto_19', 'error_texto_19'));
         document.getElementById('texto_20').addEventListener('input', () => validarTexto('texto_20', 'error_texto_20'));
         document.getElementById('texto_21').addEventListener('input', () => validarTexto('texto_21', 'error_texto_21'));
-        document.getElementById('numero_8').addEventListener('input', () => validarNumero('numero_8', 'error_numero_8'));
     });
 </script>
 

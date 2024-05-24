@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Profesor</title>
     <script src="../../../JS/validaciones.js" defer></script>
+    <link rel="stylesheet" href="../../../CSS/editarProfesores.css">
 </head>
 <body>
 
@@ -47,7 +48,7 @@ if(isset($_GET['id'])){
     }
 }
 ?>
-
+<-- 
 <a class="btn btn-outline-primary" href="../../professors.php" role='button'>Tornar a inici</a>
 
 <h1>Editar</h1>
@@ -84,7 +85,7 @@ if(isset($_GET['id'])){
     <p id="error_texto_10" style="color:red;"></p><br><br>
     
     <label>Departament:</label>
-    <select name="Codi_Dept" id="numero_2" class="form-control">
+    <select name="dept" id="dept" class="form-control">
         <?php
         $result = $conexion->query("SELECT Id_Dept, Codi_Dept FROM departament;");
         $departamentos = $result->fetchAll();

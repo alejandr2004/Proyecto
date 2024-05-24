@@ -57,21 +57,21 @@ body.contactBody {
 }
 
 .name {
-    background-color: #d9534f;
-    border-bottom: 5px solid #b1322d;
+    background-color: gray;
+    border-bottom: 5px solid gray;
     color: white;
     width: 300px;
 }
 
 .name:hover {
-    background-color: rgb(163, 49, 43);
-    border-bottom: 5px solid #802420;
+    background-color: gray;
+    border-bottom: 5px solid gray;
     width: 400px;
 }
 
 .email {
-    background-color: #7239C1;
-    border-bottom: 5px solid #502789;
+    background-color: gray;
+    border-bottom: 5px solid gray;
     width: 300px;
 }
 
@@ -97,9 +97,9 @@ body.contactBody {
 .submit {
     border-radius: 5px;
     padding: 10px;
-    background-color: rgb(142, 24, 146);
+    background-color: red;
     border: none;
-    border-bottom: 5px solid #550e43;
+    border-bottom: 5px solid red;
     width: 150px;
     color: white;
     margin-top: 20px;
@@ -148,8 +148,8 @@ textarea::-ms-input-placeholder {
 
 
 select.entry {
-    background-color: #7239C1;
-    border-bottom: 5px solid #502789;
+    background-color: gray;
+    border-bottom: 5px solid gray;
     width: 300px;
     padding: 10px;
     border-radius: 5px;
@@ -225,4 +225,57 @@ nav ul li a {
 .auth-buttons .register {
     background-color: #007bff;
     color: black;
+}
+@media (max-width: 600px) {
+    .wrapper, .form, .entry, .name, .email, .message, .select {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .submit {
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+    }
+
+    .auth-buttons .login,
+    .auth-buttons .register {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    @keyframes shadow {
+        0% {}
+    
+        50% {
+            opacity: 0.8;
+            width: 20%;
+        }
+    }
+
+.message {
+    width: 200px;
+}
+.email {
+    width: 200px;
+}
+.name { 
+    width: 200px;
+}
+.form {
+    width: 90%;
+}
 }

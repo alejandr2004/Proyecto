@@ -91,6 +91,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+if (isset($_GET["tick"])){
+
+session_destroy();
+
+
+}
+
+
+
+
 ?>
 
 </body>

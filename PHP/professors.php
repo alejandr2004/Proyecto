@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="estilos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/estilo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
@@ -18,80 +18,78 @@ if (!isset($_SESSION["usuario"])) {
     exit(); // Importante para evitar que el código PHP siga ejecutándose
 }
 
-$usu="root";
-$pwd="Alex_5963";
-$srv="localhost";
-$db_name="JS_escola";
+require "conexion.php";
+
 $tbl_professors="professors";
-// Conexion de la BD
-try{
-$conexion=new PDO("mysql:host=$srv;dbname=$db_name",$usu,$pwd);
-}catch(Exception $error){
-echo $error;
+// Consulta general, Consulta sin filtro, es decir, lo que se ve al entrar a alumnes.php
+$query = "SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
+FROM Professors p
+INNER JOIN Departament d
+ON p.dept = d.Codi_Dept";
+
+// Consulta para contar el número de filas
+$countQuery = "SELECT COUNT(*) as total FROM Professors p INNER JOIN Departament d ON p.dept = d.Codi_Dept";
+
+// si se usa la barra buscadora, se guarda en la variable 'busqueda' el texto buscado,
+// y le añadimos a la variable 'query' la condicion que ha entrado por la barra buscadora
+if (isset($_POST['buscar'])) {
+    $busqueda = $_POST['busqueda'];
+    $query .= " WHERE p.Id_Professor LIKE :busqueda
+        OR p.Nom_Professor LIKE :busqueda
+        OR p.Cognom1_Professor LIKE :busqueda
+        OR p.Cognom2_Professor LIKE :busqueda
+        OR p.DNI_Professor LIKE :busqueda
+        OR p.Correu_Professor LIKE :busqueda
+        OR p.Sexe_Professor LIKE :busqueda
+        OR d.Nom_Dept LIKE :busqueda
+        OR p.Telefon_Professor LIKE :busqueda";
+    $countQuery .= " WHERE p.Id_Professor LIKE :busqueda
+    OR p.Nom_Professor LIKE :busqueda
+    OR p.Cognom1_Professor LIKE :busqueda
+    OR p.Cognom2_Professor LIKE :busqueda
+    OR p.DNI_Professor LIKE :busqueda
+    OR p.Correu_Professor LIKE :busqueda
+    OR p.Sexe_Professor LIKE :busqueda
+    OR d.Nom_Dept LIKE :busqueda
+    OR p.Telefon_Professor LIKE :busqueda";
 }
-// Filtrados de los titulos, filtro basico de A-Z
+// si se da click en los botones se ordena de la A-Z la columna que seleccionas
+// solo se tiene que poner la condicion de ordenar de A-Z dependiendo del boton que se de click
 if (isset($_POST['filtre_id'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY p.Id_Professor ASC;");
+    $query .= " ORDER BY p.Id_professor ASC";
 } elseif (isset($_POST['filtre_Nom_Professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY p.Nom_Professor ASC;");
+    $query .= " ORDER BY p.Nom_professor ASC";
 } elseif (isset($_POST['filtre_cognom1_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY p.Cognom1_Professor ASC;");
+    $query .= " ORDER BY p.Cognom1_professor ASC";
 } elseif (isset($_POST['filtre_cognom2_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY p.Cognom2_Professor ASC;");
+    $query .= " ORDER BY p.Cognom2_Professor ASC";
 } elseif (isset($_POST['filtre_telefon_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY p.Telefon_Professor ASC;");
+    $query .= " ORDER BY p.Telefon_Professor ASC";
 } elseif (isset($_POST['filtre_DNI_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY p.DNI_Professor ASC;");
+    $query .= " ORDER BY p.DNI_professor ASC";
 } elseif (isset($_POST['filtre_correu_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY p.Correu_Professor ASC;");
+    $query .= " ORDER BY c.Correu_Professor ASC";
 } elseif (isset($_POST['filtre_sexe_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY d.Nom_Dept ASC;");
+    $query .= " ORDER BY p.Sexe_Professor ASC";
 } elseif (isset($_POST['filtre_departament_professor'])) {
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept
-    ORDER BY d.Nom_Dept ASC;");
-} else {
-    // Si no hay filtro seleccionado, mostrar la tabla normal
-    $result = $conexion->query("SELECT p.Id_Professor, p.Nom_Professor, p.Cognom1_Professor, p.Cognom2_Professor, p.Telefon_Professor, p.DNI_Professor, p.Correu_Professor, p.Sexe_Professor, d.Nom_Dept
-    FROM Professors p
-    INNER JOIN Departament d
-    ON p.dept = d.Codi_Dept;");
+    $query .= " ORDER BY d.Nom_Dept ASC";
 }
-$consulta = $result->fetchAll(PDO::FETCH_ASSOC);
+
+// si se ha enviado el form de la busqueda se ejecuta la consulta PERO CAMBIANDO LA PALABRA 'BUSQUEDA' POR %BUSQUEDA% 
+// se hace para evitar errores en la asignacion de la consulta en la variable, y porque sin los %% no funcionaria la consulta
+if (isset($_POST['buscar'])) {
+    $statement = $conexion->prepare($query);
+    $statement->execute(['busqueda' => "%$busqueda%"]);
+    
+    $countStatement = $conexion->prepare($countQuery);
+    $countStatement->execute(['busqueda' => "%$busqueda%"]);
+    $rowCount = $countStatement->fetch(PDO::FETCH_ASSOC)['total'];
+} else {
+    $statement = $conexion->query($query);
+    $rowCount = $conexion->query($countQuery)->fetch(PDO::FETCH_ASSOC)['total'];
+}
+
+$consulta = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- Botones de las tablas -->
 <div class="container mt-4">
@@ -100,8 +98,23 @@ $consulta = $result->fetchAll(PDO::FETCH_ASSOC);
         <a class="btn btn-outline-primary me-2" href="departament.php" role="button">Departament</a>
         <a class="btn btn-outline-primary me-2" href="classe.php" role="button">Classe</a>
         <a class="btn btn-outline-primary" href="./formularios/formulariosProfessors/formCrearProfessors.php" role="button">Crear</a>
-        <a class="btn btn-outline-primary" href="index.php" role="button">Cerrar Sesion</a>
+        <a class="btn btn-outline-primary" href='index.php?tick="1"' role="button">Cerrar Sesion</a>
     </div>
+
+    <!-- Formulario de búsqueda -->
+    <form method="post" class="mb-3">
+        <div class="input-group">
+            <input type="text" name="busqueda" class="form-control" placeholder="Buscar...">
+            <button class="btn btn-outline-secondary" type="submit" name="buscar">Buscar</button>
+        </div>
+    </form>
+
+    <!-- Mostrar número de resultados -->
+    <div class="mb-3">
+        <strong>Resultados de la búsqueda: <?php echo $rowCount; ?></strong>
+    </div>
+
+
 <!-- Titulos de las columnas, Que filtran -->
 <div class="table-responsive">
         <table class="table table-striped">

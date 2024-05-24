@@ -23,9 +23,9 @@ if (!isset($_SESSION["usuario"])) {
 <header>
     <nav>
         <a href="#"><img src="../../../IMG/login.png" alt="Logo" class="logo"></a>
-        <a class="btn btn-outline-primary" href='../../classe.php' role='button'>Tornar a inici</a>
+        <a class="btn btn-outline-primary" href='../../alumnes.php' role='button'>Tornar a inici</a>
         <div class="auth-buttons">
-            <button class="login" onclick="window.location.href='../../index.php'">Cerrar Sesion</button>
+            <button class="login" onclick="window.location.href='../../index.php?tick=1'">Cerrar Sesion</button>
         </div>
     </nav>
 </header>
@@ -45,7 +45,7 @@ if (!isset($_SESSION["usuario"])) {
         <input type="text" class="entry email" name="Cognom2_Alumne" placeholder="Segon Cognom" id="texto_19">
         <p id="error_texto_19" style="color:red;"></p>
         <label>Classe:</label>
-        <select name='Codi_Dept' id='Codi_Dept' class='entry'>
+        <select name='Classe' id='Classe' class='entry'>
             <?php
             require_once "../../conexion.php";
             $result = $conexion->query("SELECT Id_Classe FROM classe;");
