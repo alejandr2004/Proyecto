@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$bdname = 'JS_escola';
+$bdname = 'j';
 $usuario = 'root';
 $contraseña = 'Alex_5963';
 try{

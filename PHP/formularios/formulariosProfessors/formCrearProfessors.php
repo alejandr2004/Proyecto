@@ -7,7 +7,7 @@
     <title>Formulario del Profesor</title>
     <link rel="stylesheet" href="styles.css">
     <script src="../../../JS/validaciones.js" defer></script>
-    <link rel="stylesheet" href="../../../CSS/crearProfesores.css">
+    <link rel="stylesheet" href="../../../CSS/crearForms.css">
 </head>
 <body class="contactBody">
 <?php

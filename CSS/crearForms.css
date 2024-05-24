@@ -9,13 +9,13 @@ body.contactBody {
     height: 90vh;
 }
 
-h1 {
-    text-align: center;
-}
-
-.logo {
-    height: 70px;
-    margin-right: 20px;
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px 0;
 }
 
 .btn-outline-primary {
@@ -26,41 +26,6 @@ h1 {
 }
 
 .btn-outline-primary:hover {
-    background-color: #d9534f;
-}
-
-.title {
-    text-align: center;
-    font-size: 40px;
-    color: rgb(100, 37, 37);
-}
-
-.boton {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin: 10px 0;
-}
-
-.btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin: 10px 0;
-    display: block; margin: 0 auto;
-}
-
-.btn-primary {
-    color: black;
-    border: 2px solid rgb(12, 5, 5);
-    background-color: transparent;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.btn-primary:hover {
     background-color: #d9534f;
 }
 
@@ -81,33 +46,52 @@ h1 {
     padding: 10px 10px;
 }
 
-.name,
-.email,
-.message,
-select.entry,
-input.form-control {
-    background-color: gray;
-    border-bottom: 5px solid gray;
-    color: black;
-    width: 250px;
+.entry {
+    display: block;
+    margin: 30px auto;
     padding: 10px;
     border-radius: 5px;
     border: none;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease 0s;
     box-shadow: 0px 0px 25px 2px #AAA;
-    display: block;
-    margin: 30px auto;
 }
 
-.name:hover,
-.email:hover,
-.message:hover,
-select.entry:hover,
-input.form-control:hover {
+.name {
+    background-color: gray;
+    border-bottom: 5px solid gray;
+    color: white;
+    width: 300px;
+}
+
+.name:hover {
+    background-color: gray;
+    border-bottom: 5px solid gray;
+    width: 400px;
+}
+
+.email {
+    background-color: gray;
+    border-bottom: 5px solid gray;
+    width: 300px;
+}
+
+.email:hover {
     background-color: rgb(21, 10, 36);
     border-bottom: 5px solid rgb(21, 10, 36);
     width: 380px;
     color: white;
+}
+
+.message {
+    background-color: gray;
+    border-bottom: 5px solid gray;
+    width: 300px;
+}
+
+.message:hover {
+    background-color: gray;
+    border-bottom: 5px solid gray;
+    width: 370px;
 }
 
 .submit {
@@ -119,7 +103,6 @@ input.form-control:hover {
     width: 150px;
     color: white;
     margin-top: 20px;
-    transition: all 0.3s ease;
 }
 
 .submit:hover {
@@ -133,22 +116,40 @@ input.form-control:hover {
     color: rgb(100, 37, 37);
 }
 
+.shadow {
+    box-shadow: 0px 0px 60px 5px #AAA;
+    opacity: 0.5;
+    border-radius: 100px;
+    width: 50%;
+    margin: 50px auto 0 auto;
+    padding: 0 20px;
+    animation: shadow 1.5s infinite;
+}
+
 .error {
     color: #d9534f;
     font-size: 14px;
 }
 
-input::placeholder,
+@keyframes shadow {
+    0% {}
+    50% {
+        opacity: 0.8;
+        width: 50%;
+    }
+}
+
+input::placeholder, 
 textarea::placeholder {
     color: white;
 }
 
-input:-ms-input-placeholder,
+input:-ms-input-placeholder, 
 textarea:-ms-input-placeholder {
     color: white;
 }
 
-input::-ms-input-placeholder,
+input::-ms-input-placeholder, 
 textarea::-ms-input-placeholder {
     color: white;
 }
@@ -171,6 +172,23 @@ nav {
 .logo {
     height: 70px;
     margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
 }
 
 .auth-buttons {
@@ -197,6 +215,81 @@ nav {
     color: black;
 }
 
+.select {
+    background-color: gray;
+    border-bottom: 5px solid gray;
+    width: 300px;
+}
+
+.select:hover {
+    background-color: rgb(21, 10, 36);
+    border-bottom: 5px solid rgb(21, 10, 36);
+    width: 300px;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: gainsboro;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: gainsboro;
+}
+
+.logo {
+    height: 70px;
+    margin-right: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.auth-buttons {
+    display: flex;
+    margin-left: auto;
+}
+
+.auth-buttons .login,
+.auth-buttons .register {
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.auth-buttons .login {
+    background-color: white;
+    color: black;
+}
+
+.auth-buttons .register {
+    background-color: #007bff;
+    color: black;
+}
+
+/* Para pantallas pequeñas (teléfonos móviles) */
 @media (max-width: 600px) {
     .wrapper, .form, .entry, .name, .email, .message, .select {
         width: 100%;
@@ -228,25 +321,33 @@ nav {
         margin-left: 0;
         margin-top: 10px;
     }
-
     @keyframes shadow {
         0% {}
-
+    
         50% {
             opacity: 0.8;
             width: 20%;
         }
     }
 
-    .message,
-    .email,
-    .name,
-    .form-control,
-    select.entry {
-        width: 200px;
-    }
-
-    .form {
-        width: 90%;
-    }
+.message {
+    width: 200px;
+}
+.email {
+    width: 200px;
+}
+.name { 
+    width: 200px;
+}
+.form {
+    width: 90%;
+}
+.name:hover,
+.email:hover,
+.message:hover,
+select.entry:hover,
+select.form-control:hover,
+input.form-control:hover {
+    width: 300px;
+}
 }

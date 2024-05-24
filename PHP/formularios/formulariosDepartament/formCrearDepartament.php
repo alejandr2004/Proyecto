@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
     <script src="../../../JS/validaciones.js" defer></script>
-    <link rel="stylesheet" href="../../../CSS/crearDepartament.css">
+    <link rel="stylesheet" href="../../../CSS/crearForms.css">
 </head>
 <body class="contactBody">
 <?php

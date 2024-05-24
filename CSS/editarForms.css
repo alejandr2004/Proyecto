@@ -85,6 +85,7 @@ h1 {
 .email,
 .message,
 select.entry,
+select.form-control,
 input.form-control {
     background-color: gray;
     border-bottom: 5px solid gray;
@@ -103,10 +104,11 @@ input.form-control {
 .email:hover,
 .message:hover,
 select.entry:hover,
+select.form-control:hover,
 input.form-control:hover {
     background-color: rgb(21, 10, 36);
     border-bottom: 5px solid rgb(21, 10, 36);
-    width: 380px;
+    width: 300px;
     color: white;
 }
 
