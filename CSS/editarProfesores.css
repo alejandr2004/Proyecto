@@ -9,13 +9,13 @@ body.contactBody {
     height: 90vh;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin: 10px 0;
+h1 {
+    text-align: center;
+}
+
+.logo {
+    height: 70px;
+    margin-right: 20px;
 }
 
 .btn-outline-primary {
@@ -26,6 +26,41 @@ body.contactBody {
 }
 
 .btn-outline-primary:hover {
+    background-color: #d9534f;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    color: rgb(100, 37, 37);
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px 0;
+    display: block; margin: 0 auto;
+}
+
+.btn-primary {
+    color: black;
+    border: 2px solid rgb(12, 5, 5);
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
     background-color: #d9534f;
 }
 
@@ -46,28 +81,29 @@ body.contactBody {
     padding: 10px 10px;
 }
 
-.entry {
-    display: block;
-    margin: 30px auto;
+.name,
+.email,
+.message,
+select.entry,
+input.form-control {
+    background-color: gray;
+    border-bottom: 5px solid gray;
+    color: black;
+    width: 250px;
     padding: 10px;
     border-radius: 5px;
     border: none;
-    transition: all 0.5s ease 0s;
+    transition: all 0.5s ease;
     box-shadow: 0px 0px 25px 2px #AAA;
-}
-
-.name,
-.email,
-.message {
-    background-color: gray;
-    border-bottom: 5px solid gray;
-    width: 300px;
+    display: block;
+    margin: 30px auto;
 }
 
 .name:hover,
 .email:hover,
 .message:hover,
-select.entry:hover {
+select.entry:hover,
+input.form-control:hover {
     background-color: rgb(21, 10, 36);
     border-bottom: 5px solid rgb(21, 10, 36);
     width: 380px;
@@ -83,6 +119,7 @@ select.entry:hover {
     width: 150px;
     color: white;
     margin-top: 20px;
+    transition: all 0.3s ease;
 }
 
 .submit:hover {
@@ -96,45 +133,23 @@ select.entry:hover {
     color: rgb(100, 37, 37);
 }
 
-.shadow {
-    box-shadow: 0px 0px 60px 5px #AAA;
-    opacity: 0.5;
-    border-radius: 100px;
-    width: 50%;
-    margin: 50px auto 0 auto;
-    padding: 0 20px;
-    animation: shadow 1.5s infinite;
-}
-
 .error {
     color: #d9534f;
     font-size: 14px;
 }
 
-input::placeholder, 
+input::placeholder,
 textarea::placeholder {
     color: white;
 }
 
-input:-ms-input-placeholder, 
+input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
     color: white;
 }
 
-input::-ms-input-placeholder, 
+input::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
-    color: white;
-}
-
-select.entry {
-    background-color: gray;
-    border-bottom: 5px solid gray;
-    width: 300px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    transition: all 0.5s ease 0s;
-    box-shadow: 0px 0px 25px 2px #AAA;
     color: white;
 }
 
@@ -156,23 +171,6 @@ nav {
 .logo {
     height: 70px;
     margin-right: 20px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
 }
 
 .auth-buttons {
@@ -229,5 +227,26 @@ nav ul li a {
         width: 100%;
         margin-left: 0;
         margin-top: 10px;
+    }
+
+    @keyframes shadow {
+        0% {}
+
+        50% {
+            opacity: 0.8;
+            width: 20%;
+        }
+    }
+
+    .message,
+    .email,
+    .name,
+    .form-control,
+    select.entry {
+        width: 200px;
+    }
+
+    .form {
+        width: 90%;
     }
 }

@@ -50,10 +50,9 @@ if(isset($_GET['id'])){
     </nav>
 </header>
 
-<h1>Editar Alumno</h1>
 <div class="wrapper">
     <div class="title">
-        <a>Crear Alumnos</a>
+        <a>Editar Alumnos</a>
     </div>
 
     <form method="post" action="../../acciones/accionesAlumnes/editarAlumnes.php?id=<?php echo $id; ?>">

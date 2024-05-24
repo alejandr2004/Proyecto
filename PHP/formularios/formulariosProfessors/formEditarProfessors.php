@@ -48,59 +48,60 @@ if(isset($_GET['id'])){
     }
 }
 ?>
-<-- 
-<a class="btn btn-outline-primary" href="../../professors.php" role='button'>Tornar a inici</a>
+<header>
+    <nav>
+        <a href="#"><img src="../../../IMG/login.png" alt="Logo" class="logo"></a>
+        <a class="btn-outline-primary boton" href='../../alumnes.php' role='button'>Tornar a inici</a>
+        <div class="auth-buttons">
+            <button class="login" onclick="window.location.href='../../index.php?tick=1'">Cerrar Sesion</button>
+        </div>
+    </nav>
+</header>
 
-<h1>Editar</h1>
-<form method="POST" action="../../acciones/accionesProfessors/editarProfessors.php">
-    <label>Id del professor:</label>
-    <input type="text" name="id" class="form-control" value="<?php echo htmlspecialchars($id); ?>" readonly>
-    
-    <label>Nom del professor:</label>
-    <input type="text" name="Nom_professor" class="form-control" value="<?php echo htmlspecialchars($Nom_professor); ?>" id="texto_6">
-    <p id="error_texto_6" style="color:red;"></p><br><br>
-    
-    <label>Primer Cognom:</label>
-    <input type="text" name="Cognom1_professor" class="form-control" value="<?php echo htmlspecialchars($Cognom1_professor); ?>" id="texto_7">
-    <p id="error_texto_7" style="color:red;"></p><br><br>
-    
-    <label>Segon Cognom:</label>
-    <input type="text" name="Cognom2_professor" class="form-control" value="<?php echo htmlspecialchars($Cognom2_professor); ?>" id="texto_8">
-    <p id="error_texto_8" style="color:red;"></p><br><br>
-    
-    <label>Telèfon del professor:</label>
-    <input type="text" name="Telefon_professor" class="form-control" value="<?php echo htmlspecialchars($Telefon_professor); ?>" id="telefono_2">
-    <p id="error_telefono_2" style="color:red;"></p><br><br>
-    
-    <label>DNI del professor:</label>
-    <input type="text" name="DNI_professor" class="form-control" value="<?php echo htmlspecialchars($DNI_professor); ?>" id="DNI_2">
-    <p id="error_DNI_2" style="color:red;"></p><br><br>
-    
-    <label>Correu del professor:</label>
-    <input type="email" name="Correu_professor" class="form-control" value="<?php echo htmlspecialchars($Correu_professor); ?>" id="texto_9">
-    <p id="error_texto_9" style="color:red;"></p><br><br>
-    
-    <label>Sexe del professor:</label>
-    <input type="text" name="Sexe_professor" class="form-control" value="<?php echo htmlspecialchars($Sexe_professor); ?>" id="texto_10">
-    <p id="error_texto_10" style="color:red;"></p><br><br>
-    
-    <label>Departament:</label>
-    <select name="dept" id="dept" class="form-control">
-        <?php
-        $result = $conexion->query("SELECT Id_Dept, Codi_Dept FROM departament;");
-        $departamentos = $result->fetchAll();
+<div class="wrapper">
+    <div class="title">
+        <a>Editar Profesores</a>
+    </div>
+    <form method="POST" action="../../acciones/accionesProfessors/editarProfessors.php">
+        <input type="text" name="id" class="form-control" value="<?php echo htmlspecialchars($id); ?>" readonly>
         
-        foreach ($departamentos as $departamento) {
-            $selected = ($departamento['Codi_Dept'] == $dept) ? "selected" : "";
-            echo "<option value='".$departamento['Codi_Dept']."' $selected>".$departamento['Codi_Dept']."</option>";
-        }
-        ?>
-    </select>
-    <p id="error_numero_1" style="color:red;"></p><br><br>
-    
-    <button type="submit" class="btn btn-primary">Guardar</button>  
-</form>
-
+        <input type="text" name="Nom_professor" class="form-control" value="<?php echo htmlspecialchars($Nom_professor); ?>" id="texto_6">
+        <p id="error_texto_6" style="color:red;"></p>
+        
+        <input type="text" name="Cognom1_professor" class="form-control" value="<?php echo htmlspecialchars($Cognom1_professor); ?>" id="texto_7">
+        <p id="error_texto_7" style="color:red;"></p>
+        
+        <input type="text" name="Cognom2_professor" class="form-control" value="<?php echo htmlspecialchars($Cognom2_professor); ?>" id="texto_8">
+        <p id="error_texto_8" style="color:red;"></p>
+        
+        <input type="text" name="Telefon_professor" class="form-control" value="<?php echo htmlspecialchars($Telefon_professor); ?>" id="telefono_2">
+        <p id="error_telefono_2" style="color:red;"></p>
+        
+        <input type="text" name="DNI_professor" class="form-control" value="<?php echo htmlspecialchars($DNI_professor); ?>" id="DNI_2">
+        <p id="error_DNI_2" style="color:red;"></p>
+        
+        <input type="email" name="Correu_professor" class="form-control" value="<?php echo htmlspecialchars($Correu_professor); ?>" id="texto_9">
+        <p id="error_texto_9" style="color:red;"></p>
+        
+        <input type="text" name="Sexe_professor" class="form-control" value="<?php echo htmlspecialchars($Sexe_professor); ?>" id="texto_10">
+        <p id="error_texto_10" style="color:red;"></p>
+        
+        <select name="dept" id="dept" class="form-control">
+            <?php
+            $result = $conexion->query("SELECT Id_Dept, Codi_Dept FROM departament;");
+            $departamentos = $result->fetchAll();
+            
+            foreach ($departamentos as $departamento) {
+                $selected = ($departamento['Codi_Dept'] == $dept) ? "selected" : "";
+                echo "<option value='".$departamento['Codi_Dept']."' $selected>".$departamento['Codi_Dept']."</option>";
+            }
+            ?>
+        </select>
+        <p id="error_numero_1" style="color:red;"></p><br><br>
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>  
+    </form>
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('texto_6').addEventListener('input', () => validarTexto('texto_6', 'error_texto_6'));
